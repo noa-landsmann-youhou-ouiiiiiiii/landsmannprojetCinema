@@ -1,0 +1,23 @@
+header{
+    background: black;
+}
+
+.row{
+    border: 1px solid black;
+}
+
+.btn-primary:hover{
+    background-color: white;
+    color: blue;
+}
+
+.img-smile{
+    width: 75px;
+    height: 75px;
+    display: flow;
+}
+
+.img-smile:hover{
+    height: 125px;
+    width: 125px;
+}
