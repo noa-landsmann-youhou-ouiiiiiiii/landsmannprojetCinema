@@ -6,7 +6,7 @@ header{
     border: 1px solid black;
 }
 
-.btn-primary:hover{
+.btn:hover{
     background-color: white;
     color: blue;
 }
@@ -20,4 +20,10 @@ header{
 .img-smile:hover{
     height: 125px;
     width: 125px;
+}
+
+.nav-item{
+    margin-left: 20px;
+    margin-right: 20px;
+    background: white;
 }
