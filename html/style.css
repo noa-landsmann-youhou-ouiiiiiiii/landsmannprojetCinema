@@ -3,7 +3,8 @@ header{
 }
 
 .row{
-    border: 1px solid black;
+    /*border: 1px solid black;*/
+    border: 1px solid white;
 }
 
 .btn:hover{
