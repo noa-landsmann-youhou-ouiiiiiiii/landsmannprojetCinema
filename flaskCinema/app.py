@@ -1,3 +1,4 @@
+import json
 from flask import Flask,render_template
 import pymysql
 from config import Config
@@ -21,7 +22,11 @@ def get_connection():
 def accueil():
     connection = get_connection()
     if connection:
-        return render_template('index.html')
+        requete = connection.cursor()
+        requete.execute("select * from seances order by id desc")
+        resultat = requete.fetchall()
+        connection.close()
+        return resultat
     else:
         return 'abc'
 
