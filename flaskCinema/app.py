@@ -1,13 +1,29 @@
 from flask import Flask,render_template
-from
+import pymysql
+from config import Config
 
 app = Flask(__name__)
 
-
+def get_connection():
+    try:
+        connection = pymysql.connect(
+            host=Config.DB_HOST,
+            user=Config.DB_USER,
+            password=Config.DB_PASSWORD,
+            database=Config.DB_NAME,
+            cursorclass=pymysql.cursors.DictCursor
+        )
+        return connection
+    except Exception as e:
+        print(e)
+        return None
 @app.route('/')
 def accueil():
-    return render_template('index.html')
-
+    connection = get_connection()
+    if connection:
+        return render_template('index.html')
+    else:
+        return 'abc'
 
 if __name__ == '__main__':
     app.run()
