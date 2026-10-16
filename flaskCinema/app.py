@@ -23,7 +23,7 @@ def accueil():
     connection = get_connection()
     if connection:
         requete = connection.cursor()
-        requete.execute("select * from seances order by id desc")
+        requete.execute("select * from seances join films on seances.id_film=films.id order by seances.id desc")
         resultat = requete.fetchall()
         connection.close()
         return resultat
