@@ -53,7 +53,33 @@ def accueil():
 
 @app.route('/seances')
 def seances():
-    return render_template('seances.html')
+    connection = get_connection()
+    if connection is not None:
+        cursor = connection.cursor()
+        cursor.execute("select current_timestamp")
+        date_actuelle = cursor.fetchall()
+        cursor.execute("select * from seances order by heure asc")
+        seances = cursor.fetchall()
+        i = 0
+        for row in seances:
+            if row["heure"] > date_actuelle[0]["current_timestamp"]:
+                id_seance = seances[i]["id"]
+                id_seance_2 = seances[i + 1]["id"]
+                id_seance_3 = seances[i + 2]["id"]
+                break
+            else:
+                pass
+            i += 1
+        cursor.execute(f"select * from seances join films on seances.id_film=films.id where seances.id={id_seance}")
+        prochaine_seance = cursor.fetchall()
+        cursor.execute(f"select * from seances join films on seances.id_film=films.id where seances.id={id_seance_2}")
+        seance_2 = cursor.fetchall()
+        cursor.execute(f"select * from seances join films on seances.id_film=films.id where seances.id={id_seance_3}")
+        seance3 = cursor.fetchall()
+        tableau = [prochaine_seance, seance_2, seance3]
+    else:
+        return None
+    return render_template('seances.html', tableau_seances=tableau)
 
 @app.route('/leemiller')
 def leemiller():

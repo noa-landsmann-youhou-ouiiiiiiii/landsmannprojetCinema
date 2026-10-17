@@ -26,14 +26,43 @@
     </div>
 </nav>
 <div class="container">
-    <h1>Salle 1</h1>
+    <div class="row">
+        <h1>Salle 1</h1>
+        <table>
+            <thead>
+            <tr>
+                <td><strong>Films</strong></td>
+                <td><strong>Séances</strong></td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for seance in tableau_seances %}
+                {% if seance[0].id_salle == 1 %}
+                    <tr><td>{{seance[0].titre}}</td><td>{{seance[0].heure}}<br>{{seance[0].version}}</td></tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
     <br>
-    <h3>Séances du 21 au 27 octobre</h3>
     <br>
     <div class="row">
-        <div class="col-sm-2 col-lg-4"><a href="{{url_for('leemiller')}}" class="btn-film"><img src="static/images/affiche-leemiller.png" class="img-fluid"></a></div>
-        <div class="col-sm-2 col-lg-4"><a href="{{url_for('croquette')}}" class="btn-film"><img src="static/images/affiche-croquette.jpg" class="img-fluid"></a></div>
-        <div class="col-sm-2 col-lg-4"><a href="{{url_for('smile')}}" class="btn-film"><img src="static/images/affiche-smile.jpg" class="img-fluid"></a></div>
+        <h1>Salle 2</h1>
+        <table>
+            <thead>
+            <tr>
+                <td><strong>Films</strong></td>
+                <td><strong>Séances</strong></td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for seance in tableau_seances %}
+                {% if seance[0].id_salle == 2 %}
+                    <tr><td>{{seance[0].titre}}</td><td>{{seance[0].heure}}<br>{{seance[0].version}}</td></tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
