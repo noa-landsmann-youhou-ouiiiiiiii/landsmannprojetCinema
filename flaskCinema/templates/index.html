@@ -28,33 +28,43 @@
     <h2>Cinéma multiplexe du Castor</h2>
     <h2>Prochaine séance</h2>
     <div class="row">
-        <div class="col-sm-4 bordure"><img src="/static/images/{{prochaine_seance[0]['image']}}" class="img-fluid"></div>
+        <div class="col-sm-4 bordure"><img src="/static/images/{{tableau_seances[0][0]['image']}}" class="img-fluid"></div>
         <div class="col-sm-8 bordure">
-            <h3 class="film">{{prochaine_seance[0].titre}}</h3>
+            <h3 class="film">{{tableau_seances[0][0]['titre']}}</h3>
             <br>
-            Séance à {{prochaine_seance[0].heure}} / Salle {{prochaine_seance[0].id_salle}}
+            Séance à {{tableau_seances[0][0].heure}} / Salle {{tableau_seances[0][0].id_salle}}
             <br>
             <h4>Résumé du film</h4>
             <br>
-            {{prochaine_seance[0].resume}}
+            {{tableau_seances[0][0].resume}}
+            <br>
+            {% if tableau_seances[0][0].interdiction_moins_de_16_ans %}
+                <img src="/static/images/interdiction-moins-de-16-ans.png" class="img-fluid img-smile">
+            {% endif %}
         </div>
     </div>
 </div>
 <div class="container">
     <h3>Dans les autres salles</h3>
     <div class="row">
-        <div class="col-sm-1 bordure"><img src="/static/images/affiche-croquette.jpg" class="img-fluid"></div>
+        <div class="col-sm-1 bordure"><img src="/static/images/{{tableau_seances[1][0]['image']}}" class="img-fluid"></div>
         <div class="col-sm-5 bordure">
-            <h3 class="film">Croquette</h3>
+            <h3 class="film">{{tableau_seances[1][0].titre}}</h3>
             <br>
-            <strong>Séance à 16h00 / Salle 2</strong>
+            <strong>Séance à {{tableau_seances[1][0].heure}} / Salle {{tableau_seances[1][0].id_salle}}</strong>
+            {% if tableau_seances[1][0].interdiction_moins_de_16_ans %}
+                <img src="/static/images/interdiction-moins-de-16-ans.png" class="img-fluid img-smile">
+            {% endif %}
         </div>
-        <div class="col-sm-1 bordure"><img src="/static/images/affiche-smile.jpg" class="img-fluid"></div>
+        <div class="col-sm-1 bordure"><img src="/static/images/{{tableau_seances[2][0]['image']}}" class="img-fluid"></div>
         <div class="col-sm-5 bordure">
-            <h3 class="film">Smile</h3>
+            <h3 class="film">{{tableau_seances[2][0].titre}}</h3>
             <br>
-            <strong>Séance à 21h00 / Salle 3</strong>
-            <img src="/static/images/interdiction-moins-de-16-ans.png" class="img-smile"></div>
+            <strong>Séance à {{tableau_seances[2][0].heure}} / Salle {{tableau_seances[2][0].id_salle}}</strong>
+            {% if tableau_seances[2][0].interdiction_moins_de_16_ans %}
+                <img src="/static/images/interdiction-moins-de-16-ans.png" class="img-fluid img-smile">
+            {% endif %}
+        </div>
     </div>
     <br>
     <br>
