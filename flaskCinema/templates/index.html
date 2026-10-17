@@ -18,8 +18,8 @@
         </button>
         <div class="collapse navbar-collapse" id="menu">
             <ul class="navbar-nav text-white">
-                <li class="nav-item"><a class="btn" href="index.html">Accueil</a></li>
-                <li class="nav-item"><a class="btn" href="seances.html">Films</a></li>
+                <li class="nav-item"><a class="btn" href="{{url_for('accueil')}}">Accueil</a></li>
+                <li class="nav-item"><a class="btn" href="{{url_for('seances')}}">Films</a></li>
             </ul>
         </div>
     </div>
@@ -28,15 +28,15 @@
     <h2>Cinéma multiplexe du Castor</h2>
     <h2>Prochaine séance</h2>
     <div class="row">
-        <div class="col-sm-4 bordure"><img src="/static/images/affiche-leemiller.png" class="img-fluid"></div>
+        <div class="col-sm-4 bordure"><img src="/static/images/{{prochaine_seance[0]['image']}}" class="img-fluid"></div>
         <div class="col-sm-8 bordure">
-            <h3 class="film">Lee Miller</h3>
+            <h3 class="film">{{prochaine_seance[0].titre}}</h3>
             <br>
-            Séance à 14h30 / Salle 1
+            Séance à {{prochaine_seance[0].heure}} / Salle {{prochaine_seance[0].id_salle}}
             <br>
             <h4>Résumé du film</h4>
             <br>
-            Ceci est le résumé du film je ne sais pas quoi mettre en vrai il a l'air bien allez le voir svp
+            {{prochaine_seance[0].resume}}
         </div>
     </div>
 </div>
@@ -59,7 +59,7 @@
     <br>
     <br>
     <div class="row">
-        <a href="/templates/seances.html" class="btn btn-primary">Voir toutes les séances</a>
+        <a href="{{url_for('seances')}}" class="btn btn-primary">Voir toutes les séances</a>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
