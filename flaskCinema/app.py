@@ -148,7 +148,7 @@ def get_seance(numero_salle):
     connection = get_connection()
     if connection is not None:
         cursor = connection.cursor()
-        cursor.execute(f"SELECT heure, films.titre, version, films.interdiction_moins_de_16_ans FROM `seances` JOIN salles ON seances.id_salle = salles.id JOIN films ON seances.id_film = films.id WHERE DATE(seances.heure) = CURRENT_DATE AND salles.numero = {numero_salle}")
+        cursor.execute(f"SELECT heure, films.titre, version, films.interdiction_moins_de_16_ans FROM `seances` JOIN salles ON seances.id_salle = salles.id JOIN films ON seances.id_film = films.id WHERE DATE(seances.heure) = CURRENT_DATE AND salles.numero = {numero_salle} ORDER BY heure ASC")
         seance = cursor.fetchall()
         return jsonify(seance)
     return None
