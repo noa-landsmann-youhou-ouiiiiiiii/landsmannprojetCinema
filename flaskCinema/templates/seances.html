@@ -38,7 +38,7 @@
             <tbody>
             {% for seance in tableau_seances %}
                 {% if seance[0].id_salle == 1 %}
-                    <tr><td>{{seance[0].titre}}</td><td>{{seance[0].heure}}<br>{{seance[0].version}}</td></tr>
+                    <tr><td><a href="/film/{{seance[0].id_film}}">{{seance[0].titre}}</a></td><td>{{seance[0].heure}}<br>{{seance[0].version}}</td></tr>
                 {% endif %}
             {% endfor %}
             </tbody>
@@ -58,7 +58,7 @@
             <tbody>
             {% for seance in tableau_seances %}
                 {% if seance[0].id_salle == 2 %}
-                    <tr><td>{{seance[0].titre}}</td><td>{{seance[0].heure}}<br>{{seance[0].version}}</td></tr>
+                    <tr><td><a href="/film/{{seance[0].id_film}}">{{seance[0].titre}}</a></td><td>{{seance[0].heure}}<br>{{seance[0].version}}</td></tr>
                 {% endif %}
             {% endfor %}
             </tbody>
