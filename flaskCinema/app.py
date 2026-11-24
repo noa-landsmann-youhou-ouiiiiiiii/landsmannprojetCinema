@@ -47,7 +47,7 @@ def accueil():
         seance3 = cursor.fetchall()
         tableau = [prochaine_seance,seance_2,seance3]
     else:
-        return None
+        return "Erreur de connexion à la base de données"
     return render_template('index.html', tableau_seances=tableau)
 
 @app.route('/seances')
