@@ -29,12 +29,9 @@ def accueil():
         i = 0
         for row in seances:
             if row["heure"] > date_actuelle[0]["current_timestamp"]:
-                try:
-                    id_seance = seances[i]["id"]
-                    id_seance_2 = seances[i+1]["id"]
-                    id_seance_3 = seances[i+2]["id"]
-                except IndexError:
-
+                id_seance = seances[i]["id"]
+                id_seance_2 = seances[i+1]["id"]
+                id_seance_3 = seances[i+2]["id"]
                 break
             else:
                 pass
