@@ -40,3 +40,8 @@ td{
 thead{
     background: #bebebe;
 }
+
+fieldset{
+    margin: 40px;
+    padding: 20px;
+}

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, jsonify
+from flask import Flask, render_template, redirect, url_for, jsonify, request
 import pymysql
 from config import Config
 
@@ -156,6 +156,25 @@ def get_seance(numero_salle):
         return jsonify(seance)
     return None
 
+@app.route('/form')
+def form():
+    return render_template('formulaire.html')
+
+@app.route('/formulaire', methods=['GET', 'POST'])
+def formulaire():
+    if request.method == 'POST':
+        titre = request.form['titre']
+        print(titre)
+        duree = request.form['duree']
+        langue = request.form['langue']
+        interdiction = request.form['interdiction']
+        resume = request.form['resume']
+        image = request.form['image']
+        tableau = [titre, duree, langue, interdiction, resume, image]
+        print(tableau)
+        return f"Données :<br>Titre : {titre}<br>Durée : {(int(duree)//60)}h{int(duree)%60}min<br>Langue : {langue}<br>Interdiction : {interdiction}<br>Resume : {resume}<br>Image : {image}"
+    else:
+        return render_template('formulaire.html')
 
 if __name__ == '__main__':
     app.run()

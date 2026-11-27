@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block body %}
+    <body>
+    <center>
+        <fieldset>
+        <legend>Formulaire pour ajout de films</legend>
+        <form action="{{url_for('formulaire')}}" method="post">
+            <label for="titre">Titre du film</label>
+            <input type="text" name="titre" id="titre" required>
+            <br>
+            <br>
+            <label for="duree">Durée du film (en minutes)</label>
+            <input type="number" min="0" name="duree" id="duree" required>
+            <br>
+            <br>
+            <label for="langue">Langue</label>
+            <select name="langue" id="langue">
+                <option>Français</option>
+                <option>Anglais</option>
+            </select>
+            <br>
+            <br>
+            Interdit aux moins de 16 ans ?
+            <br>
+            <select name="interdiction">
+                <option>Oui</option>
+                <option>Non</option>
+            </select>
+            <br>
+            <br>
+            Résumé du film
+            <br>
+            <textarea name="resume" id="resume" cols="75" rows="10"></textarea>
+            <br>
+            <br>
+            <label for="image">Affiche du film</label>
+            <input type="file" name="image" id="image">
+            <br>
+            <br>
+            <button type="submit">Valider</button>
+        </form>
+    </fieldset>
+    </center>
+    {{ donnees }}
+    </body>
+{% endblock %}
